@@ -203,6 +203,19 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
+    int len;
+
+    if(pArrayListEmployee!=NULL)
+    {
+        len=ll_len(pArrayListEmployee);
+
+        switch(menu("1.Ordenar por ID\n2.Ordenar por nombre\n3.Ordenar por horas trabajadas\n4.Ordenar por sueldo\nOpcion: "))
+        {
+            case 1:
+                ll_sort(pArrayListEmployee,,1)
+            break;
+        }
+    }
     return 1;
 }
 
