@@ -18,20 +18,13 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 
         r=fscanf(pFile,"%[^,] , %[^,] , %[^,] , %[^\n]",str1,str2,str3,str4);
 
-        if(r==4)
-        {
-            printf("%15s%15s%15s%15s\n",str1,str2,str3,str4);
-        }
-
         do
         {
             r=fscanf(pFile,"%[^,] , %[^,] , %[^,] , %[^\n]",str1,str2,str3,str4);
             if(r==4)
-            {
-                printf("%15s%15s%15s%15s\n",str1,str2,str3,str4);
 
-                ll_add(pArrayListEmployee,employee_newParametros(str1,str2,str3,str4));
-            }
+            ll_add(pArrayListEmployee,employee_newParametros(str1,str2,str3,str4));
+
         }while(!feof(pFile));
 
     return 1;

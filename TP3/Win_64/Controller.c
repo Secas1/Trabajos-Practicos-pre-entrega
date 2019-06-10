@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Employee.h"
+#include "funciones.h"
+
 
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
@@ -80,6 +82,54 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
+    int idMod,verificar;
+    Employee* pEmployee;
+
+    int auxInt;
+    char auxStr[100];
+
+    printf("Id de empleado a modificar: ");
+    fflush(stdin);
+    scanf("%d",&idMod);
+    idMod--;
+
+    pEmployee=ll_get(pArrayListEmployee,idMod);
+    printf("%10d%20s%10d%10d",pEmployee->id,pEmployee->nombre,pEmployee->horasTrabajadas,pEmployee->sueldo);
+
+    printf("ModificaR?\n1.Si\n2.No\nOpcion: ");
+    fflush(stdin);
+    scanf("%d",&verificar);
+
+    if(verificar==0)
+    {
+        printf("\nModificacion cancelada.\n");
+    }
+    else
+    {
+        switch(menu("\n1.Nombre\n2.Horas trabajadas\n3.Sueldo\nOpcion: "))
+        {
+            case 1:
+            printf("\nNuevo Nombre: ");
+            fflush(stdin);
+            scanf("%s",&auxStr);
+            employee_setNombre(pEmployee,auxStr);
+            break;
+            case 2:
+            printf("\nHoras trabajadas: ");
+            fflush(stdin);
+            scanf("%d",&auxInt);
+            employee_setHorasTrabajadas(pEmployee->horasTrabajadas,auxInt);
+            break;
+            case 3:
+            printf("\nSueldo: ");
+            fflush(stdin);
+            scanf("%d",auxInt);
+            employee_setSueldo(pEmployee,auxInt);
+            break;
+        }
+    }
+
+
     return 1;
 }
 
@@ -92,6 +142,31 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
+    int idDelete,eliminar;
+    Employee* pEmployee;
+
+    if(pArrayListEmployee!=NULL)
+    {
+        printf("Id empleado a eliminar: ");
+        fflush(stdin);
+        scanf("%d",&idDelete);
+
+        idDelete--;
+
+        pEmployee=ll_get(pArrayListEmployee,idDelete);
+
+        printf("%10d%20s%10d%10d",pEmployee->id,pEmployee->nombre,pEmployee->horasTrabajadas,pEmployee->sueldo);
+        printf("\nSeguro de eliminar?\n1.Si\n2.No\nOpcion: ");
+        fflush(stdin);
+        scanf("%d",&eliminar);
+
+        if(eliminar==1)
+        {
+            ll_remove(pArrayListEmployee,idDelete);
+            printf("\nEliminacion completada\n");
+        }
+
+    }
     return 1;
 }
 
@@ -104,15 +179,18 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
-    Node* pAuxNode;
+    Employee* pEmployee;
 
-    pAuxNode=pArrayListEmployee->pFirstNode;
-
-    do
+    if(pArrayListEmployee!=NULL)
     {
-        printf("\n %d",pAuxNode->pElement);
-        pAuxNode=pAuxNode->pNextNode;
-    }while(pArrayListEmployee->pFirstNode->pNextNode==NULL);
+        for(int i=0;i<ll_len(pArrayListEmployee);i++)
+        {
+            pEmployee=ll_get(pArrayListEmployee,i);
+
+            printf("%10d%20s%10d%10d\n",pEmployee->id,pEmployee->nombre,pEmployee->horasTrabajadas,pEmployee->sueldo);
+        }
+    }
+
     return 1;
 }
 

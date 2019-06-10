@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "funciones.h"
 
 /****************************************************
     Menu:
@@ -26,7 +27,7 @@ int main()
     LinkedList* listaEmpleados = ll_newLinkedList();
     int s;
     do{
-        switch(menu("\n1-\n2-\n3-\n4-\n5-\n6-\n7-\n8-\n9-\n10-\n"))
+        switch(menu("\n1-Cargar los datos de los empleados desde el archivo data.csv(Modo texto)\n2-Cargar los datos de los empleados desde el archivo data.csv(Modo binario)\n3-Alta empleado\n4-Modificar empleado\n5-Baja Empleado\n6-Listar empleado\n7-Ordenar empleados\n8-Guardar los datos de los empleados en el archivo data.csv(Modo texto)\n9-Guardar los datos de los empleados en el archivo data.csv(Modo binario)\n10-Salir\nOpcion: "))
         {
             case 1:
             controller_loadFromText("data.csv",listaEmpleados);
@@ -38,14 +39,22 @@ int main()
             controller_addEmployee(listaEmpleados);
             break;
             case 4:
-            s=ll_len(listaEmpleados);
-            printf("--%d--",s);
+            controller_editEmployee(listaEmpleados);
+            break;
+            case 5:
+            controller_removeEmployee(listaEmpleados);
             break;
             case 6:
             controller_ListEmployee(listaEmpleados);
             break;
+            case 7:
+            controller_sortEmployee(listaEmpleados);
+            break;
             case 10:
             out=1;
+            break;
+            default:
+            printf("\n\nPor favor ingresar una opcion valida\n\n");
             break;
         }
     system("pause");
@@ -54,13 +63,4 @@ int main()
     return 0;
 }
 
-int menu(char* OptMenu)
-{
-    int option=-1;
 
-    printf("%s",OptMenu);
-    fflush(stdin);
-    scanf("%d",&option);
-
-    return option;
-}

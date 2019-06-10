@@ -86,3 +86,36 @@
 
 1533133022 c:\users\alumno\downloads\tp3\win_64\controller.h
 
+1559695735 source:c:\users\alumno\downloads\trabajos-practicos-pre-entrega-master\tp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1559695735 c:\users\alumno\downloads\trabajos-practicos-pre-entrega-master\tp3\win_64\linkedlist.h
+
+1559695735 c:\users\alumno\downloads\trabajos-practicos-pre-entrega-master\tp3\win_64\employee.h
+
+1560170815 source:c:\users\alumno\downloads\trabajos-practicos-pre-entrega-master\tp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1560170704 source:c:\users\alumno\downloads\trabajos-practicos-pre-entrega-master\tp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1559695735 c:\users\alumno\downloads\trabajos-practicos-pre-entrega-master\tp3\win_64\controller.h
+
+1560171952 source:c:\users\alumno\downloads\trabajos-practicos-pre-entrega-master\tp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
